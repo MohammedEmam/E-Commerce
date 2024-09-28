@@ -1,0 +1,30 @@
+<section class="my-5 pt-5 container">
+<form [formGroup]="paymentForm" >
+    <div class="mb-3">
+        <label for="details">Details</label>
+        <input formControlName="details" class="form-control" type="text" id="details" placeholder="Enter Your Adress Details">
+    </div>
+    <div *ngIf="paymentForm?.get('details')?.touched && paymentForm?.get('details')?.getError">
+        <span *ngIf="paymentForm?.get('details')?.getError('required')" class="text-danger">Required</span>
+        <span *ngIf="paymentForm?.get('details')?.getError('minlength')" class="text-danger">Minlength 5</span>
+    </div>
+    <div class="mb-3">
+        <label for="phone">Phone</label>
+        <input formControlName="phone" class="form-control" type="tel" id="phone" placeholder="Enter Your Phone">
+    </div>
+    <div *ngIf="paymentForm?.get('phone')?.touched && paymentForm?.get('phone')?.getError">
+        <span *ngIf="paymentForm?.get('phone')?.getError('required')" class="text-danger">Required</span>
+        <span *ngIf="paymentForm?.get('phone')?.getError('pattern')" class="text-danger">pattern</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="city">City</label>
+        <input formControlName="city" class="form-control" type="text" id="city" placeholder="Enter Your city">
+    </div>
+    <div *ngIf="paymentForm?.get('city')?.touched && paymentForm?.get('city')?.getError">
+        <span *ngIf="paymentForm?.get('city')?.getError('required')" class="text-danger">Required</span>
+        <span *ngIf="paymentForm?.get('city')?.getError('minlength')" class="text-danger">Minlength 2</span>
+    </div>
+    <button (click)="CheckOut()" class="btn main-btn w-100">Pay Now</button>
+</form>
+</section>

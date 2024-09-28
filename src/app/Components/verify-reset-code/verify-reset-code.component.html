@@ -1,0 +1,10 @@
+<section class="container ">
+    <h2 class="h5 my-3">Please Enter Your Verification Code</h2>
+    <form (ngSubmit)="sendResetCode()" [formGroup]="codeForm" >
+    <input formControlName="resetCode" class="form-control my-3" type="password" placeholder="Enter Your Verification Code">
+    <button class="btn main-btn">
+        <span *ngIf="!spin" >Verify</span>
+        <span *ngIf="spin"><i  class=" fa-solid fa-circle-notch fa-spin"></i></span>
+    </button>
+</form>
+</section>

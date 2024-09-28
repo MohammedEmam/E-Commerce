@@ -1,0 +1,10 @@
+<section class="container my-5">
+    <div class="row g-4">
+        <div *ngFor="let item of brandsList?.data" class="col-3">
+            <div class="card">
+                <img [src]="item?.image" alt="">
+                <h6 class="text-center">{{item?.name}}</h6>
+            </div>
+        </div>
+    </div>
+</section>

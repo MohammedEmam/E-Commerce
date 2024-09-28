@@ -1,0 +1,67 @@
+<section>
+    <div  class="row g-0">
+        <div class="col-9">
+            <owl-carousel-o [options]="static">
+                <ng-template carouselSlide><img height="200" class="object-fit-cover w-100" src="assets/Images/main-slider-1.jpeg" alt=""></ng-template>  
+                <ng-template carouselSlide><img height="200" class="object-fit-cover w-100" src="assets/Images/main-slider-2.jpeg" alt=""></ng-template>  
+                <ng-template carouselSlide><img height="200" class="object-fit-cover w-100" src="assets/Images/main-slider-3.jpeg" alt=""></ng-template>  
+              </owl-carousel-o>        
+        </div>
+        <div class="col-3">
+            <div>
+                <img height="100" class="object-fit-fill w-100" src="assets/Images/slide-1.jpeg" alt="">
+                <img height="100" class="object-fit-fill w-100" src="assets/Images/slide-2.jpeg" alt=""> 
+            </div>
+        </div>
+    </div>
+    
+</section>
+<section>
+<h3 class="h6 py-2">Shop Popular Categories</h3>
+    <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of categories ">
+          <ng-template carouselSlide>
+            <img class="object-fit-cover" height="200" [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+            <h5 class="h6 text-center text-main">{{slide.name}}</h5>
+          </ng-template>
+        </ng-container>
+    
+      </owl-carousel-o>
+    
+</section>
+<section class="container">
+    <input [(ngModel)]="term" class="w-50 mx-auto form-control my-3" type="text" placeholder="Search......">
+    <div class="row g-2">
+        <div *ngFor="let product of products | searchHome:term" class="col-sm-6 col-md-4 col-lg-3">
+                <div class="m-2 card p-3">
+                    <a [routerLink]="['/Productdetails' , product._id]" class="">
+                <img class="w-100" [src]="product.imageCover" alt="">
+                <h3 class="text-main font-sm">{{product.category.name}}</h3>
+                <h4 class="font-sm">{{product.title | cuttext}}</h4>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>{{product.price | currency :"EG "}}</span>
+                    <span class="text-muted"><i class="rating-color fa-solid fa-star"></i>{{product.ratingsAverage}}</span>
+                </div>
+            </a>
+            <div class="d-flex justify-content-between align-items-center">
+                <button (click)="addToCart(product._id)" class="main-btn  w-75">+ add to cart</button>
+                <button class="border-none" (click)="AddProductToWishlist(product._id  )">
+                <i  [ngClass]="[this._BlankService.wishIdList.includes(product._id)?'text-danger fa-solid fa-heart':'fa-solid fa-heart text-black']" 
+                role="button"  class="fa-2x my-2 "></i>
+            </button>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<nav class="mx-auto w-25 d-flex justify-content-center align-items-center" aria-label="Page navigation example">
+    <ul class="pagination">
+      <!-- <li role="button" [attr.disabled]="prevPage < 2" (click)="PageProducts(prevPage)" class="page-item"><a class="page-link  text-main" >Previous</a></li> -->
+      <li role="button" (click)="PageProducts(1)" class="page-item"><a class="page-link  text-main" >1</a></li>
+      <li role="button" (click)="PageProducts(2)" class="page-item"><a class="page-link  text-main" >2</a></li>
+      <li role="button" (click)="PageProducts(3)" class="page-item"><a class="page-link  text-main" >3</a></li>
+      <!-- <li role="button" (click)="PageProducts(nextPage)" class="page-item"><a class="page-link  text-main" >Next</a></li> -->
+    </ul>
+  </nav>
+
+
