@@ -1,32 +1,32 @@
 <div class=""></div>
 <ng-template #WishListEmpty>
-    <div class="container text-center h2 my-3"> Wish List Is Empty</div>
+  <div class="container text-center h2 my-3"> Wish List Is Empty</div>
 </ng-template>
 <section *ngIf="wishList.count > 0 ; else WishListEmpty " class="container bg-light my-5 p-5 rounded-3">
-<div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-        <h2 class="h3">Wish List</h2>
-      </div>
-    
-</div>
+      <h2 class="h3">Wish List</h2>
+    </div>
 
-<div *ngFor="let item of wishList?.data" class="row my-2 py-2 border-bottom">
-    <div class="col-2">
-        <img  class="w-100 rounded-3" [src]="item?.imageCover" alt="{{item?.product?.title}}">
+  </div>
+
+  <div *ngFor="let item of wishList?.data" class="row d-flex align-items-center my-2 py-2 border-bottom">
+    <div class="col-xl-4 col-lg-4 col-sm-6">
+      <img class="w-100 rounded-3" [src]="item?.imageCover" alt="{{item?.product?.title}}">
     </div>
-    <div class="col-10 d-flex justify-content-between align-items-center">
-        <div>
-            <h4 class="h5">{{item?.title}}</h4>
-            <h4 class="h6">{{item.price | currency: ' '  }} EGP</h4>
-            <span (click)="RemoveProducFromUserWishlist(item._id)"  role="button" class="text-danger">
-                <i class="fa-regular fa-trash-can"></i> Remove</span>
-        </div>
-        <div>
-            <button (click)="AddToCart(item?.id)"  class="main-btn w-100 my-3">+ add to cart</button>
-        </div>
+    <div class="col-xl-4 col-lg-4 col-sm-6 my-sm-2">
+      <div>
+        <h4 class="h5 mt-2">{{item?.title}}</h4>
+        <h4 class="h6 mt-2">{{item.price | currency: ' '  }} EGP</h4>
+        <span (click)="RemoveProducFromUserWishlist(item._id)" role="button" class="text-danger mt-2">
+          <i class="fa-regular fa-trash-can"></i> Remove</span>
+      </div>
+      <div>
+        <button (click)="AddToCart(item?.id)" class="main-btn w-100 my-3">+ add to cart</button>
+      </div>
     </div>
-</div>
+  </div>
 </section>
 
 
-
+<!-- <div class="col-xl-3 col-lg-4 col-sm-6 my-sm-2 d-flex justify-content-center align-items-center"> -->
